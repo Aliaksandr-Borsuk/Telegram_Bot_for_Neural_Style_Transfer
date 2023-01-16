@@ -7,9 +7,7 @@
   
 Примеры работы бота.
   
-![](https://github.com/Alexandr-Borsuk/Telegram_Bot_for_Neural_Style_Transfer/blob/main/images/scr%201.jpg)
-  
-![](https://github.com/Alexandr-Borsuk/Telegram_Bot_for_Neural_Style_Transfer/blob/main/images/scr%202.jpg)
+![](https://github.com/Alexandr-Borsuk/Telegram_Bot_for_Neural_Style_Transfer/blob/main/images/scr.jpg)
 
 
 
