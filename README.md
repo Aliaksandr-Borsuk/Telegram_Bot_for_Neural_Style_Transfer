@@ -36,7 +36,7 @@ https://habr.com/ru/post/453512/
 Если пользователь присылает незнакомые команды , или картинки с неправильными метками бот сообщает об этом пользователю и просит сделать всё как нужно.
 Так же бот ждёт картинки с метками style и content.
 Пример отсыдки картинок для бота.
-![](https://github.com/Alexandr-Borsuk/Telegram_Bot_for_Neural_Style_Transfer/blob/main/images/sample.jpg)
+![](https://github.com/Alexandr-Borsuk/Telegram_Bot_for_Neural_Style_Transfer/blob/main/images/sample.jpg = 100x50)
 
 
 
