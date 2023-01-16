@@ -7,7 +7,7 @@
   
 Примеры работы бота.
   
-![](images/scr 1.jpg)
+![](/images/scr 1.jpg)
   
 ![](images/scr 2.jpg)
 
