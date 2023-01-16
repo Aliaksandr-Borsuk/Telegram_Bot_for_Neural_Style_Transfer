@@ -35,9 +35,9 @@ https://habr.com/ru/post/453512/
 **/draw** - обрабатывает входные картинки    
 Если пользователь присылает незнакомые команды , или картинки с неправильными метками бот сообщает об этом пользователю и просит сделать всё как нужно.
 Так же бот ждёт картинки с метками style и content.
-Пример отсыдки картинок для бота.
-![](https://github.com/Alexandr-Borsuk/Telegram_Bot_for_Neural_Style_Transfer/blob/main/images/sample.jpg = 100*50)
-<img src="https://github.com/Alexandr-Borsuk/Telegram_Bot_for_Neural_Style_Transfer/blob/main/images/sample.jpg" width="200" height="200" />
+Пример отсылки картинок для бота.    
+
+<img src="https://github.com/Alexandr-Borsuk/Telegram_Bot_for_Neural_Style_Transfer/blob/main/images/sample.jpg" width="400" height="150" />
 
 
 
