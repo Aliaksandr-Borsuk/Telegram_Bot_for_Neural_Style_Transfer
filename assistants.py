@@ -1,4 +1,5 @@
 # модель для переноса стиля
+# с необходимыми классами
 
 import torch
 import torch.nn as nn
@@ -10,7 +11,6 @@ class ContentMSELoss(nn.Module):
     def __init__(self):
         super(ContentMSELoss, self).__init__()
         self.target= None
-
     # делаем detach ибо обучать будем не их а входное изображение
     def set_target(self, target):
         self.target = target.detach()
@@ -18,7 +18,6 @@ class ContentMSELoss(nn.Module):
     def to_device(self, device):
         if self.target is not None:
             self.target.to(device)
-#        self.to(device)
 
     def forward(self, input):
         loss = F.mse_loss(input, self.target)
@@ -44,7 +43,7 @@ class StyleMSELoss(nn.Module):
     def to_device(self, device):
         if self.target is not None :
             self.target.to(device)
-#        self.to(device)
+
     def forward(self, x):
         loss = F.mse_loss(GramMatrix()(x), self.target)
         return loss
@@ -57,20 +56,19 @@ class Normalization_for_VGG(nn.Module):
         self.std = torch.tensor([0.229, 0.224, 0.225]).view(-1, 1, 1)
         
     def forward(self, img):
-        # normalize img
         return (img - self.mean) / self.std 
+    
     # это чтобы перносить экземпляр класса с устройства на устройство
     def to_device(self, device):
         self.mean = self.mean.to(device)
         self.std = self.std.to(device)
-#        self.to(device)
 
 # класс самой модели для переноса стиля
 class Style_Transfer_01(nn.Module):
     '''
     модель основана на первых слоях VGG19
     перед переносом стиля требует инициализации
-    картинкаами style и content
+    картинками style и content
     '''
     def __init__(self, pool='max'):
         super(Style_Transfer_01, self).__init__()
@@ -84,8 +82,7 @@ class Style_Transfer_01(nn.Module):
         self.style_loss_3 = StyleMSELoss()
         self.style_loss_4 = StyleMSELoss()
         self.style_loss_5 = StyleMSELoss()
-        
-        
+           
         # считает contentloss
         self.content_loss = ContentMSELoss()
         
