@@ -37,7 +37,7 @@ https://habr.com/ru/post/453512/
 Так же бот ждёт картинки с метками style и content.
 Пример отсылки картинок для бота.    
 
-<img src="https://github.com/Alexandr-Borsuk/Telegram_Bot_for_Neural_Style_Transfer/blob/main/images/sample.jpg" width="400" height="150" />
+<img src="https://github.com/Alexandr-Borsuk/Telegram_Bot_for_Neural_Style_Transfer/blob/main/images/sample.jpg" width="400"  />
 
 
 
