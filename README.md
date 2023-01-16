@@ -5,8 +5,10 @@
 Этот Telegram бот перносит стиль одной картинки на другую, с помощью алгоритма NST (Neural Style Transfer).  
   
 Примеры работы бота.
-![...](images/scr 1)
-![...](images/scr 2)
+  
+![](images/scr 1.jpg)
+  
+![](images/scr 2.jpg)
 
 
 
