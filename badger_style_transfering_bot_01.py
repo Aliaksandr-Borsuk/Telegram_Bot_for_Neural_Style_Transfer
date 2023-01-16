@@ -1,5 +1,3 @@
-# этот бот расписан по шагам ибо я - чайник 
-
 # используем библиотеку python-telegram-bot в Python
 # Подключим многопоточный модуль расширения telegram.ext (версия 13.x(13.13))
 from telegram.ext import Updater
@@ -8,13 +6,10 @@ from telegram.ext import Updater
 from telegram.ext import CommandHandler
 # импортируем обработчик `MessageHandler` и класс с фильтрами
 from telegram.ext import MessageHandler, Filters
-# '''
-# Модуль argparse
-# Благодаря этому модулю в скриптах становится возможным работа с тем, что, без его использования,
-# было бы скрыто от кода этих скриптов.
-# '''
-import argparse
 
+# Модуль argparse
+# Благодаря этому модулю передаём параметры в скрипт
+import argparse
 # Чтобы знать, когда и почему что-то не работает должным образом, настроим модуль ведения журнала логов:
 # https://docs-python.ru/standart-library/paket-logging-python/
 # 1.02
@@ -24,8 +19,8 @@ import requests
 from pathlib import Path
 import shutil
 import json
-# мои костыли
-import preparation
+# мои модули
+import preparation    
 import class_for_style_trasfering
 
 from PIL import Image
@@ -33,7 +28,7 @@ from io import BytesIO
 
 # создаётся объект parser с указанием его описания.
 parser = argparse.ArgumentParser(description='badger_style_transfering_bot_01')
-# Далее, с помощью метода parser.add_argument(), описываются переменнst work_dir, ....
+# Далее, с помощью метода parser.add_argument(), описываются переменные size, ....
 # в которые планируется записывать входные параметры , и устанавливаем их дефолтные значения
 # При этом указывается их тип, а также задаётся справочная информация о них.
 # символы -- указывают на то, что ввод аргументов необязателен
@@ -65,7 +60,8 @@ with open(CURRENT_DIR/'token.txt') as file:
 ################################
 
 # создадим временную рабочую  папку где храним фотки стиля и контента,
-# и куда по желанию будем сбрасывать loss и готовое фото
+# и куда  будем сбрасывать loss и готовое фото
+# отдельно для каждого пользователя
 work_dir_name = 'badger_style_transfering_bot'
 WORK_DIR = CURRENT_DIR / work_dir_name
 Path.mkdir ( WORK_DIR, parents=True, exist_ok=True)
@@ -103,7 +99,7 @@ def start(update, context):
 def unknown(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, 
                              text="Sorry, I didn't understand that command." )
-    
+# обработка команды /draw  
 def draw(update, context):
     chat_id = update.effective_chat.id
     path_for_save_images = WORK_DIR /str(chat_id) 
@@ -148,17 +144,14 @@ def draw(update, context):
         # Если закоментировать строку удаления то в папке под номером чата будут сохраняться последние входные изображения,
         # а также все выходные изображения и losses
         # удаление рабочей папки пользователя если оно надо
-        # shutil.rmtree(WORK_DIR/str(update.effective_chat.id))
+        shutil.rmtree(WORK_DIR/str(update.effective_chat.id))
 
 
 
         
 
     
-def image(update, context):
-    print('image')
-#     text = json.dumps(update.to_dict(), indent=2)
-#     context.bot.send_message(chat_id=update.effective_chat.id, text=text) 
+def image(update, context): 
     
     chat_id = update.effective_chat.id
     category = update.message.caption
@@ -184,13 +177,11 @@ def image(update, context):
     else: 
         text = "The picture must be signed 'content' or 'style' "
         
-
-    # text = json.dumps(update.to_dict(), indent=2) + text
     context.bot.send_message(chat_id = chat_id, text=text )
 
     
 def photo(update, context):
-    print('photo')
+  
     chat_id = update.effective_chat.id
     category = update.message.caption
     
@@ -200,6 +191,7 @@ def photo(update, context):
         # её url
         file_path = context.bot.get_file(file_id).file_path
         # сохраняем локально
+        # если всё в порядке result = 0
         result = preparation.change_and_save_image(
             file_path=file_path, size = opt.size+10,
             chat_id = chat_id, category = category,
@@ -214,8 +206,6 @@ def photo(update, context):
     else: 
         text = "The photo must be signed 'content' or 'style' "
         
-
-    # text = json.dumps(update.to_dict(), indent=2) + text
     context.bot.send_message(chat_id = chat_id, text=text )
     
      
