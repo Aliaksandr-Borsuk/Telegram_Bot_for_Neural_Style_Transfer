@@ -1,11 +1,13 @@
 # Telegram_Bot_for_Neural_Style_Transfer 
     
-Автор бота: @badger_by (stepik id:  327028887)
-При создании бота и модели для обработки изображений были использованы материалы:
-https://stepik.org/course/122947/syllabus
-https://docs-python.ru/packages/biblioteka-python-telegram-bot-python/
-https://pytorch.org/tutorials/advanced/neural_style_tutorial.html
-https://habr.com/ru/post/453512/
+Автор бота: @badger_by (stepik id:  327028887)  
+  
+При создании бота и модели для обработки изображений были использованы материалы:   
+  
+https://stepik.org/course/122947/syllabus   
+https://docs-python.ru/packages/biblioteka-python-telegram-bot-python/   
+https://pytorch.org/tutorials/advanced/neural_style_tutorial.html   
+https://habr.com/ru/post/453512/   
   
 ## Что умеет этот бот ?
 Этот Telegram бот перносит стиль одной картинки на другую, с помощью алгоритма NST (Neural Style Transfer).  
