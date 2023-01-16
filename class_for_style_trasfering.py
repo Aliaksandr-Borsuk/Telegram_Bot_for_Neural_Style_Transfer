@@ -1,23 +1,18 @@
 # модель для переноса стиля
-# import os
 import time
 import pickle
 
 import torch
-# import torch.nn as nn
-# import torch.nn.functional as F
 import torch.optim as optim
 
 from pathlib import Path
 from PIL import Image
 
 import torchvision.transforms as transforms
-# import torchvision.models as models
 
 import copy
 # подпорки
 from assistants import Style_Transfer_01
-
 
 
 # ну а теперь напишем CLASS который по адресу папки с изображениями 
@@ -54,12 +49,9 @@ class Style_Transfering():
     # сам перенос
     def style_transfer (self, style_image, content_image, num_steps= 15,
                        style_weight=100000, content_weight=1):
-        
         ################################################
         print('Set the style transfer model..')
         ################################################
-
-
         # отправляем модель , надеюсь, на cuda )
         self.model.to_device(self.DEVICE)
         # переводим в режим инференса
@@ -115,7 +107,6 @@ class Style_Transfering():
             if i % 3 == 0:
                 print (f"ns {i}, Style Loss : {losses['style'][-1]}, Content Loss: {losses['content'][-1]}")
             #####################################################  
-        # best_image = input_image.to('cpu')
         # a last correction...
         with torch.no_grad():
             best_image.clamp_(0, 1)
@@ -127,7 +118,6 @@ class Style_Transfering():
         style_score = None
         content_score = None
         input_image = None
-
         torch.cuda.empty_cache()
 
         return best_image, losses    
@@ -151,7 +141,6 @@ class Style_Transfering():
         if self.model is None:
             self.model = Style_Transfer_01()
             # импортим веса обученой мордели
-            
             self.model.load_state_dict(torch.load(Path(__file__).parent.resolve()/'st_01_state_dict.pth'))
         # запускаем процесс переноса стиля
         best_image, losses = self.style_transfer(style_image, content_image, num_steps = num_steps,
@@ -172,7 +161,7 @@ class Style_Transfering():
         topiller = transforms.ToPILImage()    #)
         output_img = topiller(best_image.squeeze(0))\
                     .resize((width, height))
-        # сохраняем результат для потомков
+        # сохраняем результат 
         time_marker = str(int(time.time()))
         output_img.save(path /str(chat_id)/
                         ('out_'
@@ -184,13 +173,7 @@ class Style_Transfering():
                         + time_marker
                         + '.pkl'))
         with open(path_to_losses, 'wb') as file:
-            pickle.dump(losses, file)
-            
-        # Очистим cuda после работы
-        self.content = None
-        self.style = None
-        
-        
+            pickle.dump(losses, file)        
         # очистка памяти GPU
         torch.cuda.empty_cache()
         # возвращаем картинку в формате PIL
