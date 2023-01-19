@@ -29,11 +29,16 @@ https://habr.com/ru/post/453512/
 -  вес функции потерь стиля --style_weight (default=70000)
 -  - при уменьшении веса влияние стиля тоже уменьшается.  
 #### Запуск в Colab 
-Выполните следующие команды :
-! git clone https:  
-!  pip install python-telegram-bot==13.14   
-Тут необходжимо вставить свой токен в token.txt
+Выполните следующие команды :   
+
+! git clone https:     
+
+!  pip install python-telegram-bot==13.14    
+
+Тут необходжимо вставить свой токен в token.txt    
+
 ! python /content/Telegram_Bot_for_Neural_Style_Transfer/badger_style_transfering_bot_01.py --size=512
+  
 Если всё хорошо , то бот уже ждёт Ваши картинки.)
   
 ### Работа.
