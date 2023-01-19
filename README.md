@@ -31,7 +31,7 @@ https://habr.com/ru/post/453512/
 #### Запуск в Colab 
 Выполните следующие команды :   
 
-! git clone https:     
+! git clone https://github.com/Aliaksandr-Borsuk/Telegram_Bot_for_Neural_Style_Transfer.git        
 
 !  pip install python-telegram-bot==13.14    
 
