@@ -1,5 +1,7 @@
 # Telegram_Bot_for_Neural_Style_Transfer 
     
+ссылка на бота https://t.me/badger_style_transfering_bot  
+
 Автор бота: @badger_by (stepik id:  327028887)  
   
 При создании бота и модели для обработки изображений были использованы материалы:   
