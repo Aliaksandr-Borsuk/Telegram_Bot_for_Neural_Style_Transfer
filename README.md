@@ -67,7 +67,8 @@ https://habr.com/ru/post/453512/
   Телеграмм-бот находится в файле badger_style_transfering_bot_01.py.Написан при помощи библиотеки python-telegram-bot.
 Во время работы бот создаёт папку badger_style_transfering_bot, а так же отдельные папки для каждого чата  куда складывает временные файлы изображений и losses. После получения выходного изображения файлы удаляются. За это отвечает последняя строка в методе /draw файла badger_style_transfering_bot_01.py . Если её закоментить , то losses и выходные изображения будут сохраняться.   
   Обработка изображений происходит с помощью модели Style_Transfer_01 из файла assistants.py. Основа модели взята из   
-  - https://pytorch.org/tutorials/advanced/neural_style_tutorial.html 
+  - https://pytorch.org/tutorials/advanced/neural_style_tutorial.html
+  
   Архитектура модели изменена для оптимизации при многократном использовании.    
   В файле token.txt должен быть Ваш токен для бота.   
   
